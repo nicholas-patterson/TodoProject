@@ -1,6 +1,10 @@
+using AutoMapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using TodoProject.Dal;
+using TodoProject.Application.Abstractions;
+using TodoProject.Application.AutoMapper;
+using TodoProject.Infrastructure.Context;
+using TodoProject.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +14,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var conStrBuilder = new SqlConnectionStringBuilder(
     builder.Configuration.GetConnectionString("Default"));

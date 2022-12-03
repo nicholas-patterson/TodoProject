@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using TodoProject.Domain;
+using TodoProject.Domain.Entities;
 
-namespace TodoProject.Dal
+namespace TodoProject.Infrastructure.Context
 {
     public class DataContext : DbContext
     {
