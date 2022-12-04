@@ -25,12 +25,13 @@ namespace TodoProject.Api.Controllers
         public async Task<ActionResult<List<GetTodoDto>>> GetTodos()
         {
             var todos = await _todoRepo.GetTodosAsync();
+            _logger.LogInformation($"todmos...?: {todos.Count}");
             var toDto = _mapper.Map<List<GetTodoDto>>(todos);
             return toDto;
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<GetTodoDto>> GetTodo(int id)
         {
             var todo = await _todoRepo.GetTodoByIdAsync(id);
@@ -52,5 +53,7 @@ namespace TodoProject.Api.Controllers
             var toDto = _mapper.Map<GetTodoDto>(createdTodo);
             return CreatedAtAction(nameof(GetTodo), new { id = createdTodo.TodoId }, toDto);
         }
+        
+        // Todo - Add [HttpPut] & [HttpRemove]
     }
 }

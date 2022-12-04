@@ -1,8 +1,6 @@
-using AutoMapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using TodoProject.Application.Abstractions;
-using TodoProject.Application.AutoMapper;
 using TodoProject.Infrastructure.Context;
 using TodoProject.Infrastructure.Repositories;
 
