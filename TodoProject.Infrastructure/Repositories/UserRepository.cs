@@ -19,6 +19,36 @@ namespace TodoProject.Infrastructure.Repositories
             return todo;
         }
 
+        public async Task<User?> UpdateUserAsync(int id, User user)
+        {
+            var userToUpdate = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (userToUpdate == null)
+            {
+                return null;
+            }
+            
+            userToUpdate.FirstName = user.FirstName;
+            userToUpdate.LastName = user.LastName;
+
+            await _context.SaveChangesAsync();
+            return userToUpdate;
+        }
+
+        public async Task<User?> RemoveUserAsync(int id)
+        {
+            var userToDelete = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (userToDelete == null)
+            {
+                return null;
+            }
+
+            _context.Users.Remove(userToDelete);
+            await _context.SaveChangesAsync();
+            return userToDelete;
+        }
+
         public async Task<User?> GetUserByIdAsync(int id)
         {
             return await _context.Users.FirstOrDefaultAsync(user => user.UserId == id);

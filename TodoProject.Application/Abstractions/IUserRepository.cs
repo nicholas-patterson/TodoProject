@@ -8,5 +8,7 @@ namespace TodoProject.Application.Abstractions
         Task<List<User>> GetUsersAsync();
         Task<User?> GetUserByIdAsync(int id);
         Task<User> CreateUserAsync(User user);
+        Task<User?> UpdateUserAsync(int id, User user);
+        Task<User?> RemoveUserAsync(int id);
     }
 }

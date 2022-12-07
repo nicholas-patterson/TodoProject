@@ -17,6 +17,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITodoService, TodoService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var conStrBuilder = new SqlConnectionStringBuilder(
     builder.Configuration.GetConnectionString("Default"));
