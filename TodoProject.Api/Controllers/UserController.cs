@@ -34,7 +34,7 @@ namespace TodoProject.Api.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<GetUserDto>> GetUser(int id)
         {
             var todo = await _userService.GetUser(id);
